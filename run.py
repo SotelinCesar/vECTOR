@@ -1,8 +1,5 @@
 import logging
-
 from app import create_app
-
-
 app = create_app()
 
 if __name__ == "__main__":
@@ -18,5 +15,5 @@ if __name__ == "__main__":
 # python run.py
 #########################################
 # ngrok http 8000 --url=frog-new-satyr.ngrok-free.app
-#
+#+56934292454
 #
