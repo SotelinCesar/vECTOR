@@ -71,3 +71,16 @@ def insert_message(wa_id: str, thread_id: str, role: str, content: str):
         VALUES (?, ?, ?, ?, ?)
     """, (wa_id, thread_id, role, content, utc_iso_now()))
     conn.commit(); conn.close()
+
+def get_thread_rec(wa_id: str):
+    conn = connect()
+    cur = conn.cursor()
+    cur.execute("""
+        SELECT wa_id, thread_id, created_at, last_used, retention_days
+        FROM threads
+        WHERE wa_id = ?
+        LIMIT 1
+    """, (wa_id,))
+    row = cur.fetchone()
+    conn.close()
+    return row
